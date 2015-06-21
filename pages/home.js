@@ -82,9 +82,6 @@ $('#btn-input').keypress(function (e) {
     var code = e.keyCode || e.which;
     if (code === 13) {
         $("#btn-chat").click();
-        $('.panel-body').scrollTop($('.panel-body')[0].scrollHeight);
-        messageClient.addEventListener(eventListener);
-
     };
 });
    
@@ -99,7 +96,6 @@ $('button#btn-chat').on('click', function(event) {
     
     $('input#btn-input').val('');
 	var sinchMessage = messageClient.newMessage(global_recipient, text);
-    $('.panel-body').scrollTop($('.panel-body')[0].scrollHeight);
 	messageClient.send(sinchMessage).fail(handleError);
 });
 
@@ -107,7 +103,6 @@ var eventListener = {
 	onIncomingMessage: function(message) {
         if (message.senderId == global_recipient) {
                 $("#buddyMsg").tmpl({"username": global_recipient, "msg": message.textBody}).appendTo(".chat");
-            $('.panel-body').scrollTop($('.panel-body')[0].scrollHeight);
         }
 	}
 }

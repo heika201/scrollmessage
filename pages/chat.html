@@ -1,17 +1,15 @@
-<html>
-
+<!DOCTYPE html>
+<html> 
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="/pages/sinch.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </head>
 
-    
 <style>
 .chat
 {
@@ -73,48 +71,14 @@
     background-color: #555;
 }
 </style>
-    
+
 <body>
-    <div id="auth">
-        <form>
-            <input id="username" placeholder="username">
-            <input id="password" type="password" placeholder="password">
-            <button id="loginUser">Login</button>
-            <button id="createUser">Sign Up</button>
-        </form>
-    </div>
-
-    <form id="pickRecipient" style="display:none;">
-        <input id="recipient" placeholder="recipient">
-        <button id="pickRecipient">Chat</button>
-    </form>
-
-    <div id="chat" style="display:none;">
-        <div id="userInfo">
-            Logged in as: <span id="username"></span><br>
-            Chatting with: <span id="recipient"></span>
-        </div>
-
-        <form id="newMessage">
-            <input id="message" placeholder="message">
-            <button id="sendMsg">Send</button>
-        </form>
-
-        <div id="chatArea"></div>
-    </div>
-
-    <div class="error"></div>
-
-    
-
-    
-    
-<div class="container" style="display: none;">
+<div class="container">
     <div class="row">
         <div class="col-md-5">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <span class="glyphicon glyphicon-comment"></span>
+                    <span class="glyphicon glyphicon-comment"></span> Larry
                     <div class="btn-group pull-right">
                         <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
                             <span class="glyphicon glyphicon-chevron-down"></span>
@@ -141,9 +105,9 @@
                 </div>
                 <div class="panel-footer">
                     <div class="input-group">
-                        <input id="btn-input" type="text" class="form-control input-sm" autofocus="autofocus" placeholder="Type your message here..." />
+                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-warning btn-sm" id="btn-chat">
+                            <button class="btn btn-warning btn-sm" id="btn-chat">
                                 Send</button>
                         </span>
                     </div>
@@ -152,12 +116,8 @@
         </div>
     </div>
 </div>
-    
 </body>
 
-<script src="/pages/home.js"></script>
-
-    
 <script id="buddyMsg" type="text/x-jQuery-tmpl">
     <li class="left clearfix"><span class="chat-img pull-left">
         <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
@@ -190,12 +150,10 @@
     </li>
 </script>
 <script>
-    // For testing
-    /*var myjson = {"username": "Andy", "msg": "Hello!"};
+    var myjson = {"username": "Andy", "msg": "Hello!"};
     var yourjson = {"username": "Larry", "msg": "Hello!"};
 
     $("#userMsg").tmpl(myjson).appendTo(".chat");
-    $("#buddyMsg").tmpl(yourjson).appendTo(".chat");*/
+    $("#buddyMsg").tmpl(yourjson).appendTo(".chat");
 </script>
-    
 </html>
