@@ -4,17 +4,6 @@ import webapp2
 import os
 from google.appengine.ext.webapp import template
 
-MAIN_PAGE_HTML = """\
-<html>
-  <body>
-    <form action="/sign" method="post">
-      <div><textarea name="content" rows="3" cols="60"></textarea></div>
-      <div><input type="submit" value="Sign Guestbook"></div>
-    </form>
-  </body>
-</html>
-"""
-
 class HomePage(webapp2.RequestHandler):
     def get(self):
         path = os.path.join(os.path.dirname(__file__), 'home.html')
