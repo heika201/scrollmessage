@@ -17,8 +17,14 @@ var showPickRecipient = function() {
 
 var showChat = function() {
     $('form#pickRecipient').css('display', 'none');
-    $('div#chat').show();
-	$('span#username').text(global_username);
+    
+     $('div.container').css('display', 'block');
+    //$('div#chat').show();
+    
+	$('.panel-heading').text(global_recipient);
+    
+    
+    $('span#username').text(global_username);
     $('span#recipient').text(global_recipient);
 }
 
@@ -71,24 +77,36 @@ $('button#pickRecipient').on('click', function(event) {
 
 var messageClient = sinchClient.getMessageClient();
 
-$('button#sendMsg').on('click', function(event) {
-	event.preventDefault();
-	clearError();
+// Pressing enter submits text
+$('#btn-input').keypress(function (e) {
+    var code = e.keyCode || e.which;
+    if (code === 13) {
+        $("#btn-chat").click();
+    };
+});
+   
 
-	var text = $('input#message').val();
-    $('input#message').val('');
+//$('button#sendMsg').on('click', function(event) {
+$('button#btn-chat').on('click', function(event) {
+    event.preventDefault();
+	clearError();    
+    
+	var text = $('input#btn-input').val();
+    $("#userMsg").tmpl({"username": global_username, "msg": text}).appendTo(".chat");
+    
+    $('input#btn-input').val('');
 	var sinchMessage = messageClient.newMessage(global_recipient, text);
 	messageClient.send(sinchMessage).fail(handleError);
 });
 
 var eventListener = {
 	onIncomingMessage: function(message) {
-        if (message.senderId == global_username) {
-            $('div#chatArea').append('<div>' + message.textBody + '</div>');
-        } else {
-            $('div#chatArea').append('<div style="color:red;">' + message.textBody + '</div>');
+        if (message.senderId == global_recipient) {
+                $("#buddyMsg").tmpl({"username": global_recipient, "msg": message.textBody}).appendTo(".chat");
         }
 	}
 }
+
+
 
 messageClient.addEventListener(eventListener);
